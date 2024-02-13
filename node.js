@@ -11,7 +11,7 @@ let b = 10;
 
 
 let lap = a > b ? 'true' : 'false' 
-lap = b % a; // 나머지연산자 
+lap = b % a; // 나머지연산자 N
 console.log(result)
 
 function chkEven(num) {
