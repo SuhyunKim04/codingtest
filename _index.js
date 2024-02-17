@@ -70,3 +70,31 @@ console.log(solution4(89,8))
 let calc3 = '1+3*4';
 let result = eval(calc3);
 console.log(`result : ${result}`)
+
+
+
+function solution(myString, pat) {
+    var answer = 0;
+    answer = (+myString.toUpperCase().includes(pat.toUpperCase()))
+    return answer;
+}
+
+
+// *******************
+function solution(myString, pat) {
+    return myString.toUpperCase().includes(pat.toUpperCase())?1:0 
+}
+
+
+function solution(strArr) {
+    return strArr.map((a, i) => i% 2 ? a.toUpperCase() : a.toLowerCase());
+}
+
+
+function solution(my_string, index_list) {
+    var answer = '';
+
+    let arr = [1,2,3,4,5]
+    let result = arr.filter((a,i) => a >3);
+    return answer;
+}
