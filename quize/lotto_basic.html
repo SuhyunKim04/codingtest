@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./common.css">
+    <style>
+        
+        .card-container {
+            margin-bottom:15px;
+        }
+        .card-container input{ 
+            width:120px; height:160px; border-radius:10px;
+            text-align:center;
+            font-size:80px;
+            font-weight:bold;
+        }
+
+        .count {
+            margin-top:30px;
+            font-size:20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <h1>로또 맞추기(1 - 36)</h1>
+        <form name="myForm"> 
+            <div class="card-container">
+                <input type="text" pattern="[0-9]+" name="num" placeholder="?" required>
+                <input type="text" pattern="[0-9]+" name="num" placeholder="?" required>
+                <input type="text" pattern="[0-9]+" name="num" placeholder="?" required>
+                <input type="text" pattern="[0-9]+" name="num" placeholder="?" required>
+                <input type="text" pattern="[0-9]+" name="num" placeholder="?" required>
+            </div>
+            <div class="card-container lotto-card">
+                <input type="text" name="lotto" placeholder="?" readonly>
+                <input type="text" name="lotto" placeholder="?" readonly>
+                <input type="text" name="lotto" placeholder="?" readonly>
+                <input type="text" name="lotto" placeholder="?" readonly>
+                <input type="text" name="lotto" placeholder="?" readonly>
+            </div>
+            <button type="submit">내 번호 확인하기</button><button type="reset">다시하기</button>
+            <p class="count">0</p>
+        </form>
+    </div>
+
+    <script>
+        const fm = document.forms.myForm; 
+        const nums = fm.num;
+        const count = document.querySelector('.count')
+        const lottoNum = [3, 10, 23, 1, 35];
+        let userNum = []
+        let correct = 0; 
+
+        fm.addEventListener('submit', (e) => {
+            e.preventDefault();   
+            
+        })
+
+       
+    </script>
+</body>
+</html>

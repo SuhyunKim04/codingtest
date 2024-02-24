@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>행운의 숫자 뽑기</title>
+    <link rel="stylesheet" href="./common.css">
+    <style> 
+        input[name="result"] {
+            font-size:100px;
+            width:200px;height:200px;
+            border-radius:50%;
+            text-align:center;
+            display:block;
+            margin:30px auto;
+        } 
+
+        b { color:dodgerblue;}
+        i { color:tomato;}
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <h1>행운의 숫자에 도전하기</h1>
+        <form name="myForm"> 
+            <p class="msg">Start!</p>
+            <input type="text" name="result" readonly placeholder="?">
+            <button type="submit">도전!</button>
+            <p class="count">0</p>
+        </form>
+    </div>
+
+    <script>
+        const fm = document.forms.myForm;
+        const msg = document.querySelector('.msg')
+        const count = document.querySelector('.count') 
+        let fail = 0;
+        let success = 0;
+        const lucky = 5;
+        fm.addEventListener('submit', (e) => {
+            e.preventDefault(); 
+            const random = Math.floor(Math.random()*10)
+            fm.result.value = random
+            
+            if(random === lucky) {
+                success++
+                msg.innerHTML = 'Success'
+            }else {
+                fail++
+                msg.innerHTML = 'Try again'
+            }
+            count.innerHTML = `<b>성공${success}</b>, <i>실패${fail}</i>`
+        })
+    </script>
+</body>
+</html>

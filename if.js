@@ -125,3 +125,34 @@ function solution(n, control) {
 //   function solution(n, control) {
 //     return [...control].reduce((prev, op) => operations[op](prev), n);
 //   }
+
+
+
+function solution(numLog) {
+    var answer = '';
+    for(i=0; i < numLog.length - 1; i++){
+        if(numLog[i+1] - numLog[i] === 1){
+            answer += 'w'
+        }else if(numLog[i + 1] - numLog[i] === -1){
+            answer += "s"
+        }else if(numLog[i+1] - numLog[i] === 10){
+            answer += "d"
+        }else if(numLog[i + 1] - numLog[i] === -10){
+            answer += "a"
+        }
+    }
+    return answer;
+}
+
+
+// function solution(numLog) {
+//     const convert = {
+//         '1': 'w', '-1': 's', '10': 'd', '-10': 'a'
+//     };
+
+//     return numLog.slice(1).map((v, i) => {
+//         return convert[v - numLog[i]]
+//     }).join('')
+// }
+
+
