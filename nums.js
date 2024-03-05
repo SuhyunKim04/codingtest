@@ -111,3 +111,96 @@ function solution(names) {
     }
     return answer;
 }
+
+//공백으로 구분하기2
+//내꺼
+function solution(my_string) {
+    return my_string.split(' ').filter(e => e !== "")
+}
+
+1
+function solution(my_string) {
+    return my_string.split(' ').filter(v => v);
+}
+
+2
+function solution(my_string) {
+    return my_string.trim().split(/ +/);
+}
+
+3
+const solution = my_string => my_string.match(/[^\s]+/g);
+
+4
+return my_string.replace(/(^ *)|( *$)/g, "").replace(/ +/g, " ").split(' ');
+
+
+
+//내꺼
+//n개 간격의 원소들
+function solution(num_list, n) {
+    var answer = [];
+    for(let i =0; i < num_list.length; i+=n){
+        answer.push(num_list[i]);
+        
+    }
+    return answer;
+}
+
+
+1
+const solution = (arr, d) => arr.filter((_, idx) => idx % d === 0)
+
+2
+const solution = (num_list, n) => num_list.filter((_, i) => !(i % n))
+
+3
+function solution(num_list, n) {
+    return num_list.filter((v, idx) => !(idx % n));
+}
+
+
+
+//내꺼
+//배열의 원소 삭제하기
+function solution(arr, delete_list) {
+    return arr.filter(a => !delete_list.includes(a))
+ }
+
+1
+function solution(arr, delete_list) {
+    const set = new Set(delete_list);
+    return arr.filter((v) => !set.has(v));
+  }
+
+
+
+
+  //내꺼
+  //문자열 정수의 합
+  function solution(num_str) {
+    return num_str.split('').reduce((a,b) => a + Math.floor(b),0);
+  }
+
+
+
+  // 못품
+  //문자열 바꿔서 찾기
+
+function solution(myString, pat) {
+    return result = [...myString].map((n) => n = n == "A"? "B" : "A").join("").indexOf(pat)
+}
+
+
+//못품
+//부분 문자열 이어 붙여 문자열 만들기
+function solution(my_strings, parts) {
+    // substring과 join을 사용한 풀이법이다.
+    return my_strings.map((v,i) =>  v = v.substring(parts[i][0],parts[i][1]+1) ).join("");
+}
+
+//내꺼
+//x사이의 개수
+function solution(myString) {
+    return myString.split('x').map(v => v.length);
+}

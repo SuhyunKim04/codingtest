@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./common.css">
+    <style>
+        
+        .card-container {
+            margin-bottom:15px;
+        }
+        .card-container input{ 
+            width:120px; height:160px; border-radius:10px;
+            text-align:center;
+            font-size:80px;
+            font-weight:bold;
+        }
+
+        .count {
+            margin-top:30px;
+            font-size:20px;
+        }
+
+        .count span { 
+            font-size:30px;
+            margin-right:20px;
+            color:gold;
+        }
+        .error {
+            text-align:center; 
+            color:tomato;
+            font-size:18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <h1>로또 맞추기(1 - 36)</h1>
+        <form name="myForm"> 
+            <p class="error"></p>
+            <div class="card-container">
+                <input type="text" pattern="[0-9]+" name="num" placeholder="?" required>
+                <input type="text" pattern="[0-9]+" name="num" placeholder="?" required>
+                <input type="text" pattern="[0-9]+" name="num" placeholder="?" required>
+                <input type="text" pattern="[0-9]+" name="num" placeholder="?" required>
+                <input type="text" pattern="[0-9]+" name="num" placeholder="?" required>
+            </div>
+            <div class="card-container lotto-card">
+                <input type="text" name="lotto" placeholder="?" readonly>
+                <input type="text" name="lotto" placeholder="?" readonly>
+                <input type="text" name="lotto" placeholder="?" readonly>
+                <input type="text" name="lotto" placeholder="?" readonly>
+                <input type="text" name="lotto" placeholder="?" readonly>
+            </div>
+            <button type="submit">내 번호 확인하기</button><button type="reset">다시하기</button>
+            <p class="count">0</p>
+        </form>
+    </div>
+
+    <script>
+        const fm = document.forms.myForm; 
+        const nums = fm.num;
+        const count = document.querySelector('.count');
+        const error = document.querySelector('.error') 
+        let userNum = [] 
+        let lottoNum = [];  
+        fm.addEventListener('submit', (e) => {
+            e.preventDefault();    
+            
+            // 유저가 입력한 값을 배열에 저장
+            getUserNum();
+
+            // 유효성 검사
+            const valid = checkInvalid();
+            if(!valid) return false;  
+
+            // 새로운 로또 번호 5개 랜덤 생성
+            createLotto(5);  
+ 
+            // 당첨번호 확인
+            showResult();
+        })
+
+        fm.addEventListener('reset',()=> {
+            userNum = [];
+            lottoNum = [];
+            error.textContent = '';
+            count.textContent = '숫자를 입력후 내 번호 확인하기를 눌러보세요';
+        })
+
+        function checkDouble(numbers) {
+            let set = new Set(numbers); 
+            return set.size < numbers.length;
+        }
+
+        function checkRange() { 
+            // let notRangeNum = Array.from(nums).filter(data => +data.value < 1 || +data.value > 36)
+            let notRangeNum = userNum.filter(data => data < 1 || data > 36)
+            return notRangeNum.length > 0 ? true : false; 
+        }
+         
+        function checkInvalid() {
+            let double = checkDouble(userNum);   
+            let range = checkRange(); 
+
+            if( double || range) {
+                error.textContent = `숫자가 중복되거나, 범위 밖의 숫자가 있습니다.`;
+                return false;
+            } else {
+                error.textContent = ``;
+            }
+            return true;
+        }
+        function getMatchNum() {
+            let matchNum = lottoNum.filter( data => userNum.includes(data)); 
+            // 길이가 0 이라면 0이 출력되고, 0이 아니라면 숫자가 출력 
+            return matchNum.length === 0 ? 'Nothing' : `${matchNum}`
+            // let matched = correctNum.length === 0 ? '<span class="error">Nothing</span>' : `<span class="match">${correctNum}</span>`;
+        }
+
+        function showResult() { 
+            fm.lotto.forEach((data,i) => data.value = lottoNum[i]) ;
+            count.innerHTML = `<span>${getMatchNum()}</span> is matched`;
+        }
+
+        function getUserNum() { 
+            userNum = [];
+            nums.forEach( e => userNum.push(+e.value))
+        }
+
+        function createLotto(amount) { 
+            lottoNum = [] 
+            
+            while (lottoNum.length < amount) {
+                const randomNum = Math.floor(Math.random() * 36) + 1;
+                if (!lottoNum.includes(randomNum)) {
+                    lottoNum.push(randomNum);
+                }
+            } 
+            lottoNum = lottoNum.sort( (a,b) => a - b);
+        }
+
+     
+        
+ 
+    </script>
+</body>
+</html>
