@@ -22,3 +22,9 @@ function solution(my_string, alp) {
     return answer;
 }
 
+
+const a = [12, 4, 15, 46, 38, -2, 15]	
+const negative = a.filter(data => data < 0);
+console.log(a.indexOf(negative[0]))  
+
+const b = [13, 22, 53, 24, 15, 6]

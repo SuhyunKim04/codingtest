@@ -122,3 +122,25 @@ function solution(n) {
 
 
 
+console.clear()
+function solution10(arr, n) { 
+    let answer = [];
+    // if(arr.length % 2){
+    //     answer = arr.map((cur, i) => !(i % 2) ? cur+n:cur)
+    // }else{
+    //     answer = arr.map((cur ,i) => i % 2 ? cur+n : cur)
+    // }
+
+    return answer;
+}
+
+console.log(solution10([49, 12, 100, 276, 33], 27));
+
+
+
+function solution1(num_list, n) {
+   num_list.filter((data,i) => (i % n === 0) ? data : null)
+}
+
+
+// solution1([4, 2, 6, 1, 7, 6],2)
