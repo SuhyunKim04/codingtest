@@ -204,3 +204,19 @@ function solution(my_strings, parts) {
 function solution(myString) {
     return myString.split('x').map(v => v.length);
 }
+
+
+//못품
+//주사위 게임1
+function solution(a, b) {
+    // 조건에 맞춰서 출력한다.
+    return a % 2 == 1 && b % 2 == 1 ? a * a + b * b : a % 2 == 0 && b % 2 == 0 ? Math.abs(a-b) : 2 * (a + b);
+}
+
+
+
+
+//할 일 목록
+function solution(todo_list, finished) {
+    return todo_list.filter((e,i) => !finished[i])
+}
