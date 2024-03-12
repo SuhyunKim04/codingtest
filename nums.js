@@ -220,3 +220,36 @@ function solution(a, b) {
 function solution(todo_list, finished) {
     return todo_list.filter((e,i) => !finished[i])
 }
+
+
+//홀수 vs 짝수
+
+function solution(num_list) {
+    let even = 0;
+    let odd = 0
+
+    num_list.map((v, idx) => {
+        !(idx % 2) ? even += v : odd += v; 
+    })
+
+    return odd > even ? odd : even; 
+}
+
+
+//ad제거하기
+//내꺼
+function solution(strArr) {
+    return strArr.filter(b => !b.includes('ad'))
+ }
+
+1
+function solution(strArr) {
+
+    strArr = strArr.filter((x)=>{
+        return x.indexOf("ad") == -1
+    })
+
+    return strArr;
+}
+
+
