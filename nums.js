@@ -210,8 +210,23 @@ function solution(myString) {
 //주사위 게임1
 function solution(a, b) {
     // 조건에 맞춰서 출력한다.
-    return a % 2 == 1 && b % 2 == 1 ? a * a + b * b : a % 2 == 0 && b % 2 == 0 ? Math.abs(a-b) : 2 * (a + b);
+    let  odd = a % 2 && b % 2; 
+    let  even =  !(a % 2) && !(b%2);
+    return odd ? a**2 + b**2 : even ? Math.abs(a-b) : 2 * (a + b);
 }
+function solution(a,b) {
+    const calc = {
+        odd : (a,b) =>  a**2 + b**2,
+        even : (a,b) => Math.abs(a-b),
+        one : (a,b) =>  2 * (a + b)
+    }
+}
+
+const friend = {
+    name : 'milk',
+    age : (now) => now - 2020 + 1
+}
+
 
 
 
