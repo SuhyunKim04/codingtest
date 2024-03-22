@@ -268,3 +268,113 @@ function solution(strArr) {
 }
 
 
+
+//배열 원소의 길이 
+//틀림
+function solution(strlist) {
+    var answer = [];
+    for(let i =0; i < strlist.length; i++){
+        answer[i] = strlist.length
+    }
+    return answer
+}
+
+
+
+//심각형의 완성조건
+//못품
+function solution(sides) {
+    var answer = 0;
+    return answer;
+}
+
+//아이스 아메리카노
+//노이해
+function solution(money) {
+    return [Math.floor(money / 5500), money % 5500];
+}
+
+1
+function solution(money) {
+    let count = 0;
+    while (money >= 5500) {
+        money -= 5500;
+        count++
+    }
+    return [count, money]
+}
+
+
+2
+function solution(money) {
+    return [~~(money/5500),money%5500];
+}
+
+
+3
+function solution(money) {
+    var answer = [];
+
+    answer.push(parseInt(money/5500));
+    answer.push(money%5500);
+
+    return answer;
+}
+
+
+// 피자 나눠 먹기
+function solution(slice, n) {
+    return Math.ceil(n / slice);
+}
+
+
+//배열 자르기
+//못품
+function solution(numbers, num1, num2) {
+    return numbers.splice(num1, num2 - num1 + 1);
+}
+
+
+//삼각형의 완성조건
+//못품
+1
+function solution(sides) {
+    let answer = [];
+    let n = Math.min(...sides);
+    let m = Math.max(...sides);
+    let a = m - n;
+    let b = m;
+  
+    //m이 가장 긴 변일 때
+    while (a < m) {
+      a++;
+      answer.push(a);
+    }
+  
+    //b가 가장 긴 변일 때
+    while (b < m + n - 1) {
+      b++;
+      answer.push(b);
+    }
+    return answer.length;
+  }
+
+  2
+  function solution(sides) {
+    return Math.min(...sides) * 2 - 1;
+  }
+
+
+
+//특정문자 제거
+  function solution(my_string, letter) {
+    var answer = '';
+    answer = [...my_string].filter((a) => a !==letter).join('');
+    return answer
+}
+
+1
+  function solution(my_string, letter) {
+    const answer = my_string.split(letter).join('')
+    return answer;
+}
